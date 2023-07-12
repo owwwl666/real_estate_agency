@@ -18,6 +18,12 @@ class FlatAdmin(admin.ModelAdmin):
         "town",
     ]
     list_editable = ["new_building"]
+    list_filter = [
+        "new_building",
+        "floor",
+        "rooms_number",
+        "living_area",
+    ]
 
 
 admin.site.register(Flat, FlatAdmin)
