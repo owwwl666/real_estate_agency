@@ -15,7 +15,6 @@ SECRET_KEY = env.str('SECRET_KEY', 'REPLACE_ME')
 
 DEBUG = env.bool('DEBUG', True)
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -28,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
 
     'property.apps.PropertyConfig',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +77,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',  # noqa: E501
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
