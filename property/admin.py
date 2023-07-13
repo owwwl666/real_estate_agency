@@ -25,13 +25,11 @@ class FlatAdmin(admin.ModelAdmin):
         "rooms_number",
         "living_area",
     ]
+    raw_id_fields = ["likes"]
 
 
 class UserComplaintAdmin(admin.ModelAdmin):
-    raw_id_fields = [
-        "user",
-        "flat"
-    ]
+    raw_id_fields = ["user", "flat"]
 
 
 admin.site.register(Flat, FlatAdmin)
