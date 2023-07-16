@@ -36,6 +36,7 @@ class UserComplaintAdmin(admin.ModelAdmin):
 
 
 class OwnerAdmin(admin.ModelAdmin):
+    search_fields = ["owner"]
     raw_id_fields = ["possessions"]
 
 
