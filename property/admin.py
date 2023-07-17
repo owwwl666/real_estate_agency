@@ -5,7 +5,15 @@ from .models import UserComplaint
 from .models import Owner
 
 
+class OwnersInline(admin.TabularInline):
+    model = Flat.owners.through
+    raw_id_fields = ["owner"]
+
+
 class FlatAdmin(admin.ModelAdmin):
+    inlines = [
+        OwnersInline,
+    ]
     search_fields = [
         "town",
         "address",
