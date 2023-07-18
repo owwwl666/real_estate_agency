@@ -42,7 +42,8 @@ class Flat(models.Model):
         null=True,
         blank=True,
         db_index=True)
-    likes = models.ManyToManyField(User, verbose_name="Кто лайкнул", related_name="user_likes", blank=True)
+    who_likes = models.ManyToManyField(User, verbose_name="Кто лайкнул", blank=True,
+                                       related_name="likes")
     created_at = models.DateTimeField(
         'Когда создано объявление',
         default=timezone.now,
@@ -53,9 +54,11 @@ class Flat(models.Model):
 
 
 class UserComplaint(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Кто жаловался")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Кто жаловался",
+                             related_name="complaints")
     flat = models.ForeignKey(Flat, on_delete=models.CASCADE,
-                             verbose_name="Квартира,на которую пожаловались")
+                             verbose_name="Квартира,на которую пожаловались",
+                             related_name="critics")
     text = models.TextField(max_length=500, verbose_name="Текст жалобы")
 
 

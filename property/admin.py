@@ -34,7 +34,7 @@ class FlatAdmin(admin.ModelAdmin):
         "rooms_number",
         "living_area",
     ]
-    raw_id_fields = ["likes"]
+    raw_id_fields = ["who_likes"]
 
 
 @admin.register(UserComplaint)
