@@ -5,11 +5,11 @@ import phonenumbers
 def normalizes_phone_number(apps, schema_editor):
     Flat = apps.get_model("property", "Flat")
     flats = Flat.objects.all()
-    for flat in flats:
+    for flat in flats.iterator():
         phone_number = phonenumbers.parse(flat.owners_phonenumber, "RU")
         if phonenumbers.is_valid_number(phone_number):
             flat.owner_pure_phone = phonenumbers.format_number(phone_number, phonenumbers.PhoneNumberFormat.E164)
-        flat.save()
+            flat.save()
 
 
 class Migration(migrations.Migration):

@@ -7,10 +7,11 @@ def connects_flats_with_owners(apps, schema_editor):
     Flat = apps.get_model("property", "Flat")
     Owner = apps.get_model("property", "Owner")
     owners = Owner.objects.all()
-    for owner in owners:
+    for owner in owners.iterator():
         owner_flats = Flat.objects.filter(owner=owner.owner)
-        owner.possessions.set(owner_flats)
-        owner.save()
+        if owner_flats.exists():
+            owner.possessions.set(owner_flats)
+            owner.save()
 
 
 class Migration(migrations.Migration):
