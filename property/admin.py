@@ -10,6 +10,7 @@ class OwnersInline(admin.TabularInline):
     raw_id_fields = ["owner"]
 
 
+@admin.register(Flat)
 class FlatAdmin(admin.ModelAdmin):
     inlines = [
         OwnersInline,
@@ -36,15 +37,12 @@ class FlatAdmin(admin.ModelAdmin):
     raw_id_fields = ["likes"]
 
 
+@admin.register(UserComplaint)
 class UserComplaintAdmin(admin.ModelAdmin):
     raw_id_fields = ["user", "flat"]
 
 
+@admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
     search_fields = ["owner"]
     raw_id_fields = ["possessions"]
-
-
-admin.site.register(Flat, FlatAdmin)
-admin.site.register(UserComplaint, UserComplaintAdmin)
-admin.site.register(Owner, OwnerAdmin)
